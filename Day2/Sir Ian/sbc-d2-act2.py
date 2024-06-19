@@ -1,33 +1,28 @@
-import random
+from random import randint as com
+import os
+os.system('cls')
 
-def get_choices():
-    return random.randint("hayang", "kulob")
+player1 = int( input("0 - for Kulob  \n1 - for Hayang \n Select a number: "))
+c1, c2= com(0,1),com(0,1)
 
-def determine_winner(choices):
-    if len(set(choices)) == 1:
-        return "None, continue the game!."
+def selected(x,y,z):
+    selection = ["Unfold","Fold"]
+    return selection[x],selection[y],selection[z]
+
+def procces(p1,c1,c2):
+    if p1 != c1 and p1 != c2:
+        return "Player 1 win"
+    elif c1 != p1 and c1 != c2:
+        return "Computer 1 win"
+    elif c2 != p1 and c2 != c1:
+        return "Computer 2 win"
     else:
-        winner = choices.index(min(set(choices), key = choices.count))
-        if winner == ("hayang"):
-            return "Player 1"
-        elif winner == ("kulob"):
-            return "Computer 2"
-        else:
-            return "Computer 3"
+        return "DRAW!!!"
 
-def play_game():
-    player_choice = int("hayang or kulob?: ")
-    computer_choices = [get_choices() for _ in range(2)]
-    choices = [player_choice] + computer_choices
-    print("Player 1 choose: " + ("Fold" if player_choice == "hayang" else "Unfold"))
-    print("Computer 2 choose: " + ("Fold" if computer_choices["hayang"] == "hayang" else "Unfold"))         
-    print("Computer 3 choose: " + ("Fold" if computer_choices["hayang"] == "hayang" else "Unfold")) 
-    winner = determine_winner(choices)
-    if winner == "None":
-        print(winner + " wins! balaa gud nimo")
-    else:
-        print(winner + " wins!")
 
-if __name__ == "__main__":
-    play_game()
-
+if (player1 > 1) or (player1< 0):
+    print("Invalid Selection")
+else:
+    player, com1, com2 = selected(player1,c1,c2)
+    print(f"Player1 = {player}\nC1 = {com1}\nC2 = {com2}\n")
+    print(procces(player1,c1,c2))
