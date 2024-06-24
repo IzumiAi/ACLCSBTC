@@ -1,9 +1,7 @@
 commands = []
 while True:
     command = input("COMMAND: ")
-    if command.startswith("3"):
-        num = command.split()[-1]
-        commands.append(num)
+    if command.startswith("0"):
         print(commands)
     elif command == "NAA":
         if commands:
@@ -13,8 +11,6 @@ while True:
         if commands:
             commands.pop()   
             print(commands) 
-    elif command == "DISPLAY":
-        print(commands)
     elif command == "QUIT":
         break    
     else:
